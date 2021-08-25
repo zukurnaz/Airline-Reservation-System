@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %} Şehir Yönetim Paneli {% endblock %}
+{% block ctitle %} Şehirleri Yönet {% endblock %}
+
+{% block content %}
+<form action="" method="post">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroupFileAddon01">Şehir Adı</span>
+        </div>
+        <div class="custom-file">
+            <input type="text" name="cname" class="form-control" aria-label="Default"
+                aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group-append">
+            <button class="btn btn-success" type="submit" id="inputGroupFileAddon04">Ekle</button>
+          </div>
+    </div>
+</form>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Şehir Kodu</th>
+                <th scope="col">Şehir Adı</th>
+                <th scope="col">İşlem</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {%for city in vcities %}
+            <tr>
+                <th scope="row">{{ city.cid }} </th>
+                <td>{{ city.cname }}</td>
+                <td>
+                    <a class="btn btn-danger btn-sm" href="{{url_for('mngcitydel',id=city.cid)}}">Sil</a>
+                    
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}

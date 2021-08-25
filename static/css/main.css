@@ -1,0 +1,72 @@
+body {
+    background:#fff url("../images/bg.jpg") no-repeat;
+
+}
+.container {
+    margin-top:100px;
+    padding:60px 80px;
+
+    -webkit-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.8);
+    -moz-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.8);
+    box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.8);
+
+    border-radius:40px 30px 0 0;
+    background:#fff;
+    min-height:800px;
+}
+.adminbar {
+    padding:0;
+}
+.alogo {
+    font-size:16px;
+    padding:10px;
+    background:#fff;
+    color:#007bff!important;
+    text-shadow: 0 0 1px #000000;
+}
+.navbar-nav a{
+    transition-duration:0.4s;
+    border-radius:15px;
+    padding:5px 30px;
+    color:#fff!important;
+}
+
+.ctitle {
+    padding:10px 25px;
+    width:100%;
+    color:#fff;
+    text-shadow: 0 0 1px #000000;
+    background: rgb(0,123,255);
+    border-top-left-radius:20px;
+    border-bottom-left-radius:20px;
+    background: linear-gradient(90deg, rgba(0,123,255,1) 0%, rgba(255,255,255,1) 90%);
+
+}
+.navbar-nav a:hover {
+    background:#007bff;
+    color:#fff!important;
+}
+.adminbar-nav a {
+    border-radius:10px;
+    padding:2px 20px;
+    color:#fff!important;
+}
+.adminbar-nav a:hover {
+    background:#fff;
+    color:#007bff!important;
+}
+.input-group-text {
+    min-width:120px;
+}
+.navbar {
+background: rgb(52,58,64);
+background: linear-gradient(0deg, rgba(52,58,64,1) 0%, rgba(84,84,84,1) 100%);
+}
+.adminbar {
+    background: rgb(0,123,255);
+    background: linear-gradient(0deg, rgba(0,123,255,1) 0%, rgba(0,123,255,1) 71%, rgba(2,106,218,1) 100%);
+
+    -webkit-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.8);
+    -moz-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.8);
+    box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.8);
+}

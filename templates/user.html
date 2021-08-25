@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %} Kullanıcı Paneli {% endblock %}
+{% block ctitle %} Kullanıcı Paneli {% endblock %}
+
+{% block content %}
+
+<form action="#" method="POST">
+        <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+                </div>
+            <input type="text" name="fname" value="{{fname}}" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Surname</span>
+                </div>
+            <input type="text" name="sname" value="{{sname}}" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Email Adress</span>
+                </div>
+            <input type="email" name="email" value="{{email}}" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                </div>
+            <input type="password" name="paswd" value="{{password}}" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Kazanılan Bonus</span>
+          </div>
+      <input type="text" name="paswd" value="{{bonus}}" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+      </div>
+    <input class="btn btn-primary" type="submit" value="Update Info">
+    <a href="{{url_for("logout")}}" class="btn btn-danger">Log Out</a>
+</form>
+
+{% endblock %}

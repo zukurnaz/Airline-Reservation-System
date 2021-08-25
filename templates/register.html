@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %} Kayıt Ol {% endblock %}
+{% block ctitle %} Kayıt Ol {% endblock %}
+
+{% block content %}
+
+<form action="" method="post">
+
+        <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+                </div>
+            <input type="text" name="fname" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Surname</span>
+                </div>
+            <input type="text" name="sname" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Email Adress
+                    </span>
+                </div>
+            <input type="email" name="email" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                </div>
+            <input type="password" name="password" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+
+
+    <input class="btn btn-primary" type="submit" value="Register">
+    <div style="float:right">
+    Already Registered? <a href="{{url_for("login")}}" class="btn btn-info">Sign in!</a>
+</div>
+
+</form>
+
+{% endblock %}

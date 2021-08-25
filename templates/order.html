@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block title %} Bilet Satın Al {% endblock %}
+{% block ctitle %} Bilet Satın Al{% endblock %}
+
+{% block content %}
+<form id="ticketsend" action="" method="post">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Kalkış Noktası</span>
+        </div>
+        
+        <select name="gtfrom" class="form-control">
+            {%for city in cities %}
+            <option {% if igtfrom == city.cname %} selected {% endif %}>{{city.cname}}</option>
+
+            {%endfor%}
+        </select>
+
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Kalkış Noktası</span>
+        </div>
+        <select name="gtwhere" class="form-control">
+            {%for city in cities %}
+            <option{% if igtwhere == city.cname %} selected {% endif %} >{{city.cname}}</option{% if igtfrom == city.cname %} selected {% endif %}>
+            {%endfor%}
+        </select>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Uçuş Tarihi (Başlangıç)</span>
+        </div>
+        <input type="date" name="gtdate" id="gtdate"  {% if igtdate %} value="{{ igtdate }}" {% else %} value="{{ currentdate }}" {% endif %}" class="form-control" aria-label="Default"
+            aria-describedby="inputGroup-sizing-default">
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Uçuş Tarihi (Bitiş)</span>
+        </div>
+        <input type="date" name="gtedate" id="gtdate"  {% if igtedate %} value="{{ igtedate }}" {% else %} value="{{ currentdate }}" {% endif %}" class="form-control" aria-label="Default"
+            aria-describedby="inputGroup-sizing-default">
+    </div>
+
+    <input class="btn btn-primary" name="action" type="submit" value="Filtrele">
+    <input class="btn btn-primary" name="action" type="submit" value="Sıfırla">
+
+
+{% if tickets %}
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Uçuş Numarası</th>
+                <th scope="col">Kalkış Noktası</th>
+                <th scope="col">Varış Noktası</th>
+                <th scope="col" style="min-width:130px">Uçuş Tarihi</th>
+                <th scope="col">Kalkış Saati</th>
+                <th scope="col">Varış Saati</th>
+                <th scope="col">Bilet Ücreti</th>
+                <th scope="col">Koltuk Sayısı</th>
+                <th scope="col">Reservasyon</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+        
+            {%for ticket in tickets %}
+            <tr>
+                <th scope="row">{{ ticket.tid }} </th>
+                <td>{{ ticket.tfrom }} </td>
+                <td>{{ ticket.twhere }} </td>
+                <td>{{ ticket.tdate }} </td>
+                <td>{{ ticket.ttime }} </td>
+                <td>{{ ticket.tetime }} </td>
+                <td>{{ ticket.tprice }} ₺ </td>
+                <td>{{ ticket.taseats }}  </td>
+                <td>{% if ticket.taseats == 0 %} <a href="#" class ="btn btn-secondary btn-sm">Yer Yok</a> {% else %} <a href="{{url_for('buyticket',fid=ticket.tid)}}" class ="btn btn-primary btn-sm">Satın al</a> {% endif %}</td>
+
+
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<br>
+<div style="position:relative; margin-top:16px" id="hidealert" class="alert alert-info" role="alert">
+    Girdiğiniz tarih aralığına yakın bir sefer yoktur.
+</div>
+{% endif %}
+
+
+{% endblock %}

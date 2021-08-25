@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    {% block style %}
+    {% endblock %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="badge badge-primary navbar-brand" href="{{url_for("home")}}">
+            <h5 style="margin:0">Xyz Airlines</h5>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="{{url_for("home")}}">Home <span
+                        class="sr-only">(current)</span></a>
+                {%if "email" in session %}<a class="nav-item nav-link" href="{{url_for('reserve')}}">Rezervasyon</a>
+                {%endif%}
+                <!-- Kullanıcı girişi yapılmadan rezervasyon menüsü görünmez -->
+                <a class="nav-item nav-link" href="{{url_for('order')}}">Bilet al</a>
+                <a class="nav-item nav-link" {% if "email" in session %} href="{{url_for('user')}}">User Panel
+                    <!-- Kullanıcı girişi yapıldıysa User Panel, Yapılmadıysa Login Linki görünür -->
+
+
+                    {% else %} href="{{url_for('login')}}"> Login {% endif %}</a>
+                {% if session["basket"] and session["basket"] != 0 %} <a class="nav-item nav-link"
+                    href="{{url_for('basket')}}">Sepetim
+                    <span class="badge badge-success">{{session["basket"]}}</span> </a>{% endif %}
+                <!-- Basket sessionu varsa Sepetim görünür ve basketteki ürün sayısı parantez içinde yazar -->
+            </div>
+        </div>
+
+
+    </nav>
+    {% if "admin" in session %}
+    <!-- Admin Paneline ait kodlar sadece admin sessionda ise çalışır -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary adminbar">
+        <a class="navbar-brand alogo">Admin Panel</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav adminbar-nav">
+                <a class="nav-item nav-link" href="{{url_for('admin')}}">Kullanıcılar</a>
+                <a class="nav-item nav-link" href="{{url_for('ticket')}}">Uçuşlar</a>
+                <a class="nav-item nav-link" href="{{url_for('mngcity')}}">Şehirler</a>
+
+            </div>
+        </div>
+
+
+    </nav>
+    {% endif %}
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for msg in messages %}
+    <div style="position:absolute; width:100%" id="hidealert" class="alert alert-info" role="alert">
+        {{msg}}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div class="container">
+        <h4>
+            <div class="ctitle">{% block ctitle %}{% endblock %}</div>
+        </h4>
+        <div style="height:1rem"></div>
+        {% block content %}{% endblock %}
+    </div>
+    <div class="navbar">
+        <span style="margin:auto;color:#fff"> ©Xyz Airlines 2019 </span>
+    </div>
+    <script>
+        setTimeout(function () { $('#hidealert').fadeOut('slow'); }, 3000);
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

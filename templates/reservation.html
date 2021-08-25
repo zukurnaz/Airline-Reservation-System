@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %} Rezervasyonlarım {% endblock %}
+{% block ctitle %} Rezervasyonlarım {% endblock %}
+
+{% block content %}
+
+
+
+<div class="table-responsive">
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Ad Soyad</th>
+            <th scope="col">Kalkış Noktası</th>
+            <th scope="col">Varış Noktası</th>
+            <th scope="col">Uçuş Tarihi</th>
+            <th scope="col">Kalkış Saati</th>
+            <th scope="col">Uçuş Numarası</th>
+            <th scope="col">Ayırtılan Koltuk</th>
+            <th scope="col">Oluşturulma Tarihi</th>
+
+</tr>
+</thead>
+
+<tbody>
+
+    {%for reservation in Reservation %} 
+    <tr>
+        <th scope="row" >{{ reservation.rid }} </th>
+        <td>{{ Name }}</td>
+    {%for flight in flights%}
+    {% if flight.tid==reservation.rflightid %}
+        <td>{{ flight.tfrom }}</td>
+        <td>{{ flight.twhere }}</td>
+        <td>{{ flight.tdate }}</td>
+        <td>{{ flight.ttime }}</td>
+    {%endif%}
+    {% endfor %}
+
+        <td>{{ reservation.rflightid }}</td>
+        <td>{{ reservation.rseats }}</td>
+        <td>{{ reservation.rdate }}</td>
+
+        <td><a href="{{url_for('deletereserve',rid=reservation.rid)}}" class ="btn btn-danger btn-sm">İptal Et</a></td>
+    </td>
+    </tr>
+    {%endfor%}
+</tbody>
+</table>
+</div>
+
+{% endblock %}
+

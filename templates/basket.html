@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %} Sepetim {% endblock %}
+{% block ctitle %} Sepetim {% endblock %}
+
+{% block content %}
+
+<a href="{{url_for('emptybasket')}}" class ="btn btn-danger btn-block">Sepeti Temizle</a>
+
+
+<div class="table-responsive">
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Ad Soyad</th>
+            <th scope="col">Kalkış Noktası</th>
+            <th scope="col">Varış Noktası</th>
+            <th scope="col">Tarih</th>
+            <th scope="col">Saat</th>
+            <th scope="col">Toplam Ücret</th>
+            <th scope="col">Uçuş No</th>
+            <th scope="col">Ayırtılan Koltuk</th>
+            <th scope="col">İşlem</th>
+
+</tr>
+</thead>
+
+<tbody>
+
+    {%for reservation in Reservation %} 
+    <tr>
+        <th scope="row" >{{ reservation.rid }} </th>
+        <td>{{ Name }}</td>
+    {%for flight in flights%}
+    {% if flight.tid==reservation.rflightid %}
+        <td>{{ flight.tfrom }}</td>
+        <td>{{ flight.twhere }}</td>
+        <td>{{ flight.tdate }}</td>
+        <td>{{ flight.ttime }}</td>
+        <td>{{ reservation.rseats*flight.tprice }}</td>
+    {%endif%}
+    {% endfor %}
+        <td>{{ reservation.rflightid }}</td>
+        <td>{{ reservation.rseats }}</td>
+        
+        <td><form action="" method="post"><button type ="submit" name="action" value="{{ reservation.rid }}" class ="btn btn-success btn-sm">Tamamla</button>
+            <br><a href="{{url_for('editreserve',rid=reservation.rid)}}" class ="btn btn-primary btn-sm">Düzenle</a>           
+	    <br><a href="{{url_for('deletereserve',rid=reservation.rid)}}" class ="btn btn-danger btn-sm">İptal Et</a></form></td>
+    </tr>
+    {%endfor%}
+</tbody>
+</table>
+</div>
+
+{% endblock %}
+

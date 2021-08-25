@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %} Kullanıcı Yönetim Paneli {% endblock %}
+{% block ctitle %} Kullanıcı Yönetim Paneli {% endblock %}
+
+{% block content %}
+
+<form action="" method="post">
+        <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+                </div>
+            <input type="text" name="fname" value="{{ename}}" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Surname</span>
+                </div>
+            <input type="text" name="sname" value="{{esname}}" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Email Adress</span>
+                </div>
+            <input type="email" name="email" value="{{eemail}}" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                </div>
+            <input type="password" name="password" value="{{eupwd}}" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+    
+    <p><input type="radio" name="rank" id="1" value="1" {% if erank==1: %} checked {%endif%}> User </input>
+    <input type="radio" name="rank" id="2" value="2" {% if erank==2: %} checked {%endif%}> Admin </input></p>
+    <input class="btn btn-primary" type="submit" value="Update User">
+    <div style="float:right">
+        <a href="/edit/{{ euid }}" class="btn btn-danger">Delete User</a>
+    </div>
+
+
+</form>
+
+{% endblock %}

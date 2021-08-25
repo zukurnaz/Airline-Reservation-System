@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %} Sepeti Düzenle {% endblock %}
+{% block ctitle %} Rezervasyon Düzenle {% endblock %}
+
+{% block content %}
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <h3>Bilet Bilgileri</h3>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Sepet Numarası</th>
+                <th>{{ res.rid }}</th>
+            </tr>
+            <tr>
+                <th>Kişi Adı</th>
+                <th>{{ user.name + " " + user.sname }}</th>
+            </tr>
+            <tr>
+                <th>Kalkış Noktası</th>
+                <td>{{ ticket.tfrom }}</th>
+            </tr>
+            <tr>
+                <th>Varış Noktası</th>
+                <td>{{ ticket.twhere }}</th>
+            </tr>
+            <tr>
+                <th>Uçuş Tarihi</th>
+                <td>{{ ticket.tdate }}</th>
+            </tr>
+            <tr>
+                <th>Kalkış Saati</th>
+                <td>{{ ticket.ttime }}</th>
+            </tr>
+            <tr>
+                <th>Varış Saati</th>
+                <td>{{ ticket.tetime }}</th>
+            </tr>
+            <tr>
+                <th>Bilet Ücreti</th>
+                <td>{{ ticket.tprice }}</th>
+            </tr>
+            <tr>
+                <th>Boş Koltuk Sayısı</th>
+                <td>{{ ticket.taseats }}</th>
+            </tr>
+        </tbody>
+    </table>
+
+    <form method="post">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Koltuk Sayısı</span>
+            </div>
+        <input type="number" value="{{ res.rseats }}" name="seatn" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+         </div>
+        <button type ="submit" class ="btn btn-primary btn-block">Düzenlemeyi Bitir</button>
+    </form>
+</div>
+
+{% endblock %}
+

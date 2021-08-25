@@ -1,0 +1,47 @@
+{% extends "astyle.html" %}
+{% block title %} Yönetim Paneli {% endblock %}
+{% block ctitle %} Kayıtları Yönet {% endblock %}
+
+{% block content %}
+<div class="table-responsive">
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">First name</th>
+            <th scope="col">Surname</th>
+            <th scope="col">E-Mail</th>
+            <th scope="col">Password</th>
+            <th scope="col">Rank</th>
+            <th scope="col">Actions</th>
+
+        </tr>
+    </thead>
+
+       
+    <tbody>
+
+        {%for user in varusers %} 
+        <tr>
+            <th scope="row" >{{ user.uid }} </th>
+            <td>{{ user.name }}</td>
+            <td>{{ user.sname }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.upwd }}</td>
+            <td>{% if user.rank == 1 %} User {% else %} Admin {% endif %}</td>
+
+
+            <td>
+                
+                <a class="btn btn-danger btn-sm" href="/edit/{{ user.uid }}">Delete</a>
+                <a class="btn btn-info btn-sm" href="/edituser/{{ user.uid }}">Edit</a>
+            </td>
+
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "astyle.html" %}
+{% block title %} Uçuş Ekle {% endblock %}
+{% block ctitle %} Uçuş Ekle {% endblock %}
+
+{% block content %}
+<form id="ticketsend" action="" method="post">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Kalkış Noktası</span>
+        </div>
+        <select name="gtfrom" class="form-control">
+            {%for city in cities %}
+            <option>{{city.cname}}</option>
+            {%endfor%}
+        </select>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Varış Noktası</span>
+        </div>
+        <select name="gtwhere" class="form-control">
+            {%for city in cities %}
+            <option>{{city.cname}}</option>
+            {%endfor%}
+        </select>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Uçuş Tarihi</span>
+        </div>
+        <input type="date" name="gtdate" id="gtdate" value="{{ currentdate }}" class="form-control" aria-label="Default"
+            aria-describedby="inputGroup-sizing-default">
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Uçuş Saati</span>
+        </div>
+        <input type="time" name="gttime" class="form-control"  aria-label="Default"
+            aria-describedby="inputGroup-sizing-default" value="00:00">
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Varış Saati</span>
+        </div>
+        <input type="time" name="gtetime" class="form-control" aria-label="Default"
+            aria-describedby="inputGroup-sizing-default" value="00:00">
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Bilet Ücreti (₺)</span>
+        </div>
+        <input type="number" value="0" onkeydown="return event.keyCode !== 69" name="gtprice" class="form-control" aria-label="Default"
+            aria-describedby="inputGroup-sizing-default">
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Koltuk Sayısı</span>
+        </div>
+        <input type="number" value="0" onkeydown="return event.keyCode !== 69" name="gtseats" id="gtseats" class="form-control" aria-label="Default"
+            aria-describedby="inputGroup-sizing-default">
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Boş Koltuk</span>
+        </div>
+        <input type="number" value="0" onkeydown="return event.keyCode !== 69" name="gtaseats" class="form-control" aria-label="Default"
+            aria-describedby="inputGroup-sizing-default">
+    </div>
+    <button  type ="submit" class ="btn btn-primary btn-block">Uçuş Ekle</button>
+
+</form>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %} Giriş Paneli {% endblock %}
+{% block ctitle %} Kullanıcı Girişi {% endblock %}
+
+{% block content %}
+
+<form action="" method="post">
+        <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">E-mail Adress</span>
+                </div>
+            <input type="text" name="email" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                </div>
+            <input type="password" name="password" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+    <input class="btn btn-primary" type="submit" value="Login">
+    <a href="{{url_for("register")}}" class="btn btn-danger">Register</a>
+
+</form>
+
+{% endblock %}
