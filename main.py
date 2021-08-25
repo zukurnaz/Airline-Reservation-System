@@ -11,7 +11,7 @@ import hashlib, binascii, os
 application = Flask(__name__)
 application.secret_key = "hello"
 application.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
-application.config["SQLALCHEMY_TRACK_MODÄ°FÄ°CATÄ°ONS"] = False
+application.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 application.permanent_session_lifetime = timedelta(minutes=10)
 turkey = timezone('Europe/Istanbul')
 
